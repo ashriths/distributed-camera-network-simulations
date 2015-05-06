@@ -1,5 +1,8 @@
 __author__ = 'ashrith'
 
+IP = '127.0.0.1'
+IP = '192.168.43.116'
+
 import socket
 from threading import Thread
 import json
@@ -17,9 +20,7 @@ class NetworkGenerator(Thread):
         self.neighbor_map = {}
         self.socket = None
         self.port = None
-
-        #self.ip = '192.168.43.116'
-        self.ip = '127.0.0.1'
+        self.ip = IP
         self.listener = Thread(target=self.listen, name = "listen")
     '''
     def get_host_ip(self):

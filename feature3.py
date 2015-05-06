@@ -9,6 +9,7 @@ import scipy as sp
 import numpy as np
 import time
 from matplotlib import pyplot as plt
+
 ratio = 0.65
 
 """ Clear matches for which NN ratio is > than threshold """
@@ -41,18 +42,25 @@ def filter_matches(matches, matches2):
 
 
 #img1_path = "img/remote_in_scene.jpg"
-img2_path = "img/face.jpg"
+img2_path = "img/id.png"
 img3_path = "img/remote.jpg"
 #img_scene = cv2.imread(img1_path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
 img_ftr = cv2.imread(img2_path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
 #img3_ftr = cv2.imread(img3_path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
 
 
-detector = cv2.FeatureDetector_create("ORB") #SURF
-#detector = cv2.ORB(5000)
+#detector = cv2.FeatureDetector_create("ORB") #SURF
+detector = cv2.ORB(700)
 
-descriptor = cv2.DescriptorExtractor_create("ORB") #BRIEF
-#descriptor = cv2.ORB(5000)
+#descriptor = cv2.DescriptorExtractor_create("ORB") #BRIEF
+descriptor = cv2.ORB(700)
+
+FLANN_INDEX_KDTREE = 0
+index_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 5)
+search_params = dict(checks = 50)
+
+#matcher = cv2.FlannBasedMatcher(index_params, search_params)
+#matcher = cv2.DescriptorMatcher_create("FlannBased") #FlannBased #BruteForce-Hamming
 matcher = cv2.DescriptorMatcher_create("BruteForce-Hamming") #FlannBased #BruteForce-Hamming
 
 # detect keypoints
@@ -155,4 +163,4 @@ while True:
         pass
     view =  cv2.resize(view,None,fx=0.5, fy=0.5, interpolation = cv2.INTER_CUBIC)
     cv2.imshow("Track", view)
-    #time.sleep(0.1)
+    time.sleep(0.1)

@@ -17,9 +17,12 @@ node = NodeGenerator((network_ip, network_port), (loc_x,loc_y))
 
 while True:
     print "[1] to start"
-    print "[2] to stop"
+    print "[2] to report"
+    print "[3] to stop"
     c = raw_input()
     if c == '1':
         node.start()
     if c == '2':
+        node.generate_report()
+    if c == '3':
         sys.exit(0)
