@@ -1,7 +1,7 @@
 __author__ = 'ashrith'
 
 IP = '127.0.0.1'
-IP = '192.168.43.116'
+#IP = '192.168.43.116'
 
 import socket
 from threading import Thread
