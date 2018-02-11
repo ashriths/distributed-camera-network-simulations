@@ -9,8 +9,6 @@ The following module will try to craete a distributed netowrk of devices and tra
 
 ### Requirements
 
-Dillinger uses a number of open source projects to work properly:
-
 * [Python] - networking and image processing language used to interaface
 * [OpenCV] - The Image porcessing Library
 * [Numpy] - Math Library for Python
